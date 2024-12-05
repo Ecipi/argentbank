@@ -9,6 +9,7 @@ import { getUserProfile } from "../../features/login/login";
 import AccountSection from "../../components/AccountSection/AccountSection";
 import EditButton from "../../components/EditButton/EditButton";
 import InputWrapper from "../../components/InputWrapper/InputWrapper";
+import accountsData from "../../data/accounts.json";
 
 const User = () => {
   const { userProfile } = useSelector((state) => state.auth);
@@ -68,9 +69,9 @@ const User = () => {
           )}
         </div>
         <h2 className="sr-only">Accounts</h2>
-        <AccountSection accountTitle="Argent Bank Checking (x8349)" accountAmount="$2,082.79" description="Available Balance" />
-        <AccountSection accountTitle="Argent Bank Savings (x6712)" accountAmount="$10,928.42" description="Available Balance" />
-        <AccountSection accountTitle="Argent Bank Credit Card (x8349)" accountAmount="$184.30" description="Current Balance" />
+        {accountsData.accounts.map((account) => (
+          <AccountSection key={account.id} accountTitle={account.title} accountAmount={account.amount} description={account.description} />
+        ))}
       </main>
 
       <Footer />

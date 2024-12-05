@@ -1,3 +1,5 @@
+import "./InputWrapper.css";
+
 const InputWrapper = ({ label, id, value, onChange, disabled = false }) => {
   return (
     <div className="input-wrapper">

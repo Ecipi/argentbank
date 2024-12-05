@@ -4,9 +4,16 @@ import iconChat from "../../assets/img/icon-chat.avif";
 import iconMoney from "../../assets/img/icon-money.avif";
 import iconSecurity from "../../assets/img/icon-security.avif";
 import FeatureItem from "../../components/FeatureItem/FeatureItem";
+import featuresData from "../../data/features.json";
 import "./Home.css";
 
 const Home = () => {
+  const iconMap = {
+    chat: iconChat,
+    money: iconMoney,
+    security: iconSecurity,
+  };
+
   return (
     <>
       <Header />
@@ -23,9 +30,9 @@ const Home = () => {
         </div>
         <section className="features">
           <h2 className="sr-only">Features</h2>
-          <FeatureItem icon={iconChat} alt="Chat Icon" title="You are our #1 priority" description="Need to talk to a representative? You can get in touch through our 24/7 chat or through a phone call in less than 5 minutes." />
-          <FeatureItem icon={iconMoney} alt="Money Icon" title="More savings means higher rates" description="The more you save with us, the higher your interest rate will be!" />
-          <FeatureItem icon={iconSecurity} alt="Security Icon" title="Security you can trust" description="We use top of the line encryption to make sure your data and money is always safe." />
+          {featuresData.features.map((feature) => (
+            <FeatureItem key={feature.id} icon={iconMap[feature.id]} alt={feature.alt} title={feature.title} description={feature.description} />
+          ))}
         </section>
       </main>
 
